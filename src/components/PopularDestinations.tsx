@@ -2,7 +2,7 @@
 import { useTranslation } from "@/lib/i18n";
 
 import { useEffect, useState, useRef } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useRouter } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
@@ -55,8 +55,8 @@ export default function PopularDestinations() {
     const fetchData = async () => {
       try {
         const [countriesSnap, citiesSnap] = await Promise.all([
-          getDocs(collection(db, "countries")),
-          getDocs(collection(db, "cities"))
+          getDocs(query(collection(db, "countries"), where('target_website', '==', 'hotelchap'))),
+          getDocs(query(collection(db, "cities"), where('target_website', '==', 'hotelchap')))
         ]);
         
         const countriesData = countriesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));

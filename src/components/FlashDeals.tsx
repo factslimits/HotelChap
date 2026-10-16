@@ -21,7 +21,7 @@ export default function FlashDeals() {
         const fetchedDeals = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
-        }));
+        })).filter(deal => !deal.target_website || deal.target_website === 'hotelchap');
         setDeals(fetchedDeals);
       } catch (error) {
         console.error("Error fetching flash deals:", error);

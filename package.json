@@ -17,9 +17,11 @@
     "nodemailer": "^10.0.8",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "recharts": "^3.10.1"
+    "recharts": "^3.10.1",
+    "travelpayouts-api": "^1.0.0"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.16.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.1",
